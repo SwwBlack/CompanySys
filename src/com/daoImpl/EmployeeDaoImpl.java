@@ -37,6 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
+	//通过id查找用户方法
 	public Employee findEmployeeById(int employeeId) {
 		// TODO Auto-generated method stub
 		Connection connection = DbConnection.getConnection();

@@ -46,9 +46,9 @@ public class PublishNewMsg extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String title = (String) request.getParameter("title");
 		String content = (String) request.getParameter("content");
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(request.getCharacterEncoding());
+		//System.out.println(title);
+		//System.out.println(content);
+		//System.out.println(request.getCharacterEncoding());
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = null;
 		Message message = new Message();

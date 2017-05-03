@@ -1,3 +1,7 @@
+<%@page import="com.factory.MessageDaoImplFactory"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.bean.Message"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -37,7 +41,23 @@
        </c:choose>
    </div>
    <div align="right" id="right">
-      <p>哈哈
+      <h3 align="center">消息显示</h3>
+      <% 
+   List<Message> list = new ArrayList<>();
+   list = MessageDaoImplFactory.getMessageDaoImpl().findAllMessage();
+   if(list.size()>5){
+	   for(int i=0;i<5;i++){
+		   out.println(list.get(i).getMessageId()+"."+list.get(i).getMessageTitle());
+		   out.println();
+	   }
+   }else{
+	   for(int i=0;i<list.size();i++){
+		   out.println(list.get(i).getMessageId()+"."+list.get(i).getMessageTitle());
+		   out.println();
+	   }
+   }
+%> 
+      
    </div>
    </div>
 </body>

@@ -1,3 +1,7 @@
+<%@page import="com.factory.MessageDaoImplFactory"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.bean.Message"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,5 +16,20 @@
         <tr><h2 align="right"><a href="mainpage.jsp">首页</a>|<a href="MessageList.jsp">消息列表</a>|<a href="publishNewMeg.jsp">发布新消息</a>|<a href="PrivatePerson.jsp">个人中心</a></h2></tr>
 </table>
 <h2>消息列表</h2>
+<% 
+   List<Message> list = new ArrayList<>();
+   list = MessageDaoImplFactory.getMessageDaoImpl().findAllMessage();
+   if(list.size()>5){
+	   for(int i=0;i<5;i++){
+		   out.println(list.get(i).getMessageId()+"."+list.get(i).getMessageTitle());
+		   out.println();
+	   }
+   }else{
+	   for(int i=0;i<list.size();i++){
+		   out.println(list.get(i).getMessageId()+"."+list.get(i).getMessageTitle());
+		   out.println();
+	   }
+   }
+%> 
 </body>
 </html>
